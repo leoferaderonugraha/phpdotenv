@@ -1,0 +1,22 @@
+name: Mutable Action PoC
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  poc:
+    name: Mutable action tag demo
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Run demo action (mutable v1 tag)
+        uses: leoferaderonugraha/demo-action@v1
+
+      - name: Show result
+        run: git --no-pager diff --stat
